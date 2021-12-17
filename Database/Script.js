@@ -30,11 +30,14 @@ class Card {
     Card() {
         this.card = document.createElement("div");
         this.secCards.appendChild(this.card);
+        this.card.className = "card"
     }
 
     cardName() { // cria a div do Nome cadastrado.
         const divName = document.createElement("div");
         const name = document.createElement("h2");
+        divName.className = "dName"
+        name.className = "name"
         this.card.appendChild(divName);
         divName.appendChild(name);
         const inputName = document.querySelector("#name");
@@ -43,6 +46,7 @@ class Card {
 
     CardInfo() {
         const divInfo = document.createElement("div");
+        divInfo.className = "dInfo"
         const select = document.querySelector("#gender");
         const infoType = ["RG", "CPF", "Data Nascimento", "Gênero", "Email", "Cel", "CEP", "Complemento"]
         this.card.appendChild(divInfo);
@@ -98,7 +102,7 @@ class Card {
                     .replace(/\D/g, "")
                     .replace(/(\d{2})(\d)/, "$1/$2")
                     .replace(/(\d{2})(\d)/, "$1/$2")
-                    .replace(/([3][2-9]\/\d{2}\/|[4-9][0-9]\/\d{2}\/)/,"")// 
+                    .replace(/([3][2-9]\/\d{2}\/|[4-9][0-9]\/\d{2}\/)/,"")
                     .replace(/(\d{2}\/[1][3-9]\/|\d{2}\/[2-9]\d\/)/,"")
                     .replace(/(\d{2}\/\d{2}\/[3-9]|\d{2}\/\d{2}\/[1][1-8])|\d{2}\/\d{2}\/[2][1-9]|\d{2}\/\d{2}\/[2][0][3-9]|\d{2}\/\d{2}\/[2][0][2][3-9]/,"")
 
