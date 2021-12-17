@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: black;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            gap: 20px;
+        }
+
+        .cartao:hover{
+            height: 300px;
+            justify-content: space-evenly;
+        }
+
+        .cartao {
+            display: flex;
+            flex-direction: column;
+            height: 30px;
+            width: 20vw;
+            border-radius: 20px;
+            background: rgba(0, 37, 117, 0.8);
+            box-shadow:3px 1px 5px rgb(0, 61, 192);
+        }
+        .area-nome {
+            display: Flex;
+            justify-content: center;
+        }
+
+        .cartao:hover > .Area-Dados{
+            display: flex;
+        }
+
+        .Area-Dados {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+
+            height: 160px;
+            text-indent: 10%;
+        }
+
+        .Dados{
+            font-size: 16px;
+            color: #ececec;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="cartao">
+            <div class="area-nome">
+                <h2 class="Nome">Fulano de Almeida Pinto</h2>
+            </div>
+            <div class="Area-Dados">
+                <span class="Dados RG">RG: xx.xxx.xxx-x</span>
+                <span class="Dados CPF">CPG: xxx.xxx.xxx-xx</span>
+                <span class="Dados DN">Data de Nascimento: xx/xx/xxxx</span>
+                <span class="Dados Genero">Gênero: Masculino</span>
+                <span class="Dados Celular">Celular: (xx)xxxxx-xxxx</span>
+                <span class="Dados CEP">CEP: xx.xxx-xxx</span>
+                <span class="Dados Email">Email: fulaninho123@gmail.com.br</span>
+            </div>
+        </div>
+        <div class="cartao">
+            <div class="area-nome">
+                <h2 class="Nome">Cicrano Nunes Brado</h2>
+            </div>
+            <div class="Area-Dados">
+                <span class="Dados RG">RG: xx.xxx.xxx-x</span>
+                <span class="Dados CPF">CPG: xxx.xxx.xxx-xx</span>
+                <span class="Dados DN">Data de Nascimento: xx/xx/xxxx</span>
+                <span class="Dados Genero">Gênero: Masculino</span>
+                <span class="Dados Celular">Celular: (xx)xxxxx-xxxx</span>
+                <span class="Dados CEP">CEP: xx.xxx-xxx</span>
+                <span class="Dados Email">Email: cicraninho321@gmail.com.br</span>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

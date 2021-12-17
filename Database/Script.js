@@ -1,76 +1,110 @@
-class Card{
+class Card {
 
-    constructor(){
-        this.secCard = document.querySelector(".Cards-Area");
-        this.nameValue = document.querySelector("#name")
-        this.dataValues = document.querySelectorAll(".text-input");
-        this.DataBaseEvent();
+    constructor() {
+        this.secCards = document.querySelector(".Cards-Area");
+        this.inputs = document.querySelectorAll(".input-box")
+        this.InputsFormatter();
+        this.SendEvent();
     }
 
-    DataBaseEvent(){
-        const submitBtn = document.querySelector("#submit");
-        submitBtn.addEventListener("click",()=>{
-            this.createDiv();
-            this.createSpan();
-            this.appendDiv();
-            this.createpName();
-            this.spanInnerText();
+    InputsFormatter() {
+        document.querySelectorAll(".input-edit").forEach((elem) => {
+            const field = elem.dataset.js
+            console.log(field)
+            elem.addEventListener("input", (e) => {
+                e.target.value = this.masks[field](e.target.value)
+            }, false)
+        })
+        this.Mask();
+    }
+
+    SendEvent() {
+        const sendBtn = document.querySelector("#btn-send");
+        sendBtn.addEventListener("click", () => {
+            this.Card();
+            this.cardName();
+            this.CardInfo();
         })
     }
 
-    createDiv(){
+    Card() {
         this.card = document.createElement("div");
-        this.divName = document.createElement("div");
-        this.divData = document.createElement("div");
+        this.secCards.appendChild(this.card);
     }
 
-    createpName(){
-        this.pName = document.createElement("h2");
-        this.divName.appendChild(this.pName);
-        this.pName.innerText = this.nameValue.value
-        console.log(this.pName)
+    cardName() { // cria a div do Nome cadastrado.
+        const divName = document.createElement("div");
+        const name = document.createElement("h2");
+        this.card.appendChild(divName);
+        divName.appendChild(name);
+        const inputName = document.querySelector("#name");
+        name.innerText = inputName.value;
     }
-   
-    createSpan(){
-        for(let i = 0; i < 7; i++){
-            this.Data = document.createElement("span");
-            this.divData.appendChild(this.Data);
-            this.Data.className = "Data"
+
+    CardInfo() {
+        const divInfo = document.createElement("div");
+        const select = document.querySelector("#gender");
+        const infoType = ["RG", "CPF", "Data Nascimento", "Gênero", "Email", "Cel", "CEP", "Complemento"]
+        this.card.appendChild(divInfo);
+
+        for (let i = 0; i <= 7; i++) {
+            const Info = document.createElement("span");
+            Info.className = "Info"
+            divInfo.appendChild(Info);
+            if (infoType[3] == infoType[i]) {
+                Info.innerText = `${infoType[i]}: ${select.options[select.selectedIndex].text}`;
+            }
+            else if (i > 3) {
+                Info.innerText = `${infoType[i]}: ${this.inputs[i - 1].value}`;
+            }
+            else {
+                Info.innerText = `${infoType[i]}: ${this.inputs[i].value}`;
+            }
+        }
+
+    }
+
+    Mask() {
+        this.masks = {
+            rg(value) {
+                return value
+                    .replace(/\D/g, "")
+                    .replace(/(\d{2})(\d)/, "$1.$2")
+                    .replace(/(\d{3})(\d)/, "$1.$2")
+                    .replace(/(\d{3})(\d)/, "$1-$2")
+            },
+            cpf(value) {
+                return value
+                    .replace(/\D/g, "")
+                    .replace(/(\d{3})(\d)/, "$1.$2")
+                    .replace(/(\d{3})(\d)/, "$1.$2")
+                    .replace(/(\d{3})(\d{1,2})/, "$1-$2")
+                    
+            },
+            cel(value) {
+                return value
+                    .replace(/\D/g, "")
+                    .replace(/(\d{2})(\d)/, "($1)$2")
+                    .replace(/(\d{5})(\d)/, "$1-$2")
+            },
+            cep(value) {
+                return value
+                    .replace(/\D/g, "")
+                    .replace(/(\d{5})(\d)/, "$1-$2")
+            },
+            dn(value) {
+                    //-----> xx/xx/xxxx
+                return value
+                    .replace(/\D/g, "")
+                    .replace(/(\d{2})(\d)/, "$1/$2")
+                    .replace(/(\d{2})(\d)/, "$1/$2")
+                    .replace(/([3][2-9]\/\d{2}\/|[4-9][0-9]\/\d{2}\/)/,"")// 
+                    .replace(/(\d{2}\/[1][3-9]\/|\d{2}\/[2-9]\d\/)/,"")
+                    .replace(/(\d{2}\/\d{2}\/[3-9]|\d{2}\/\d{2}\/[1][1-8])|\d{2}\/\d{2}\/[2][1-9]|\d{2}\/\d{2}\/[2][0][3-9]|\d{2}\/\d{2}\/[2][0][2][3-9]/,"")
+
+                }
         }
     }
-    spanInnerText(){
-        const elemType = [ "RG", "CPF", "Data de Nascimento", "Gênero", "Cel", "CEP", "Email"]
-        const spans = document.querySelectorAll(".Data");
-        const selected = document.querySelector("#Gender-Option");
-        for(let i = 0; i < 6; i++){
-            spans[i].innerHTML = `${elemType[i]}: ${this.dataValues[i].value}`
-            spans[3].innerHTML = `${elemType[3]}: ${selected.options[selected.selectedIndex].value}`
-            spans[6].innerHTML = `${elemType[6]} ${this.dataValues[3].value}:`
-            console.log(spans[i].innerText)
-        }
-    }
-    
-    appendDiv(){
-        this.secCard.appendChild(this.card);
-        this.card.className = "card";
-        this.card.appendChild(this.divName);
-        this.divName.className = "divName";
-        this.card.appendChild(this.divData);
-        this.divData.className = "divData";
-    }
-
-  /*  dataValues(){
-        this.nameValue = document.querySelector("#name")
-        this.rgValue = document.querySelector("#RG-Number")
-        this.cpfValue = document.querySelector("#CPF-Number")
-        this.birthValue = document.querySelector("#Birth-Date")
-        this.celValue = document.querySelector("#Cel-Number")
-        this.cepValue = document.querySelector("#CEP-Number")
-        this.emailValue = document.querySelector("#Email")
-
-    }
-    */
-
-
 }
-let Peoples = new Card()
+
+const Cards = new Card();

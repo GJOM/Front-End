@@ -6,35 +6,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Database prototype</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="cards.css">
+    <link rel="stylesheet" href="Style.css">
 </head>
 
 <body>
-    <section class="area-data">
-        <label id="L-name" for="name">Name:
-        <input type="text" class="text-input-name" name="Name" id="name" value=""></label>
-        <label id="L-RG" for="RG-Number">RG:
-        <input type="number" class="text-input" name="RG" id="RG-Number" value=""></label>
-        <label id="L-CPF" for="CPF-Number">CPF:
-        <input type="number" class="text-input" name="CPF" id="CPF-Number" value=""></label>
-        <label id="L-BD" for="Birth-Date">Birth Date:
-        <input type="date" class="text-input" name="Birth Date" id="Birth-Date" value=""></label>
-        <label id="L-Gender" for="Gender-Option">Gender:
-        <select name="Gender" id="Gender-Option">
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-        </select></label>
-        <label id="L-Email" for="Email">Email:
-            <input type="email" class="text-input" name="Email" id="Email" value=""></label>
-        <label id="L-Cel" for="Cel-Number">Cel:
-        <input type="number" class="text-input" name="Cel" id="Cel-Number" value=""></label>
-        <label id="L-CEP" for="CEP-Number">CEP:
-        <input type="number" class="text-input" name="CEP" id="CEP-Number" value=""></label>
-        <input type="button" value="Enviar" id="submit">
+    <form class="area-data">
+        <label for="Name">Nome:
+            <input type="text" class="input-box-n input-text" id="name"></label>
+        <div>
+            <label for="rg">RG:
+                <input type="text" class="input-box input-number input-edit" id="rg" maxlength="12" data-js="rg">
+            </label>
+            <label for="cpf">CPF:
+                <input type="text" class="input-box input-number input-edit" id="cpf" maxlength="14" data-js="cpf">
+            </label>
+        </div>
+        <div>
+            <label for="dn">Data Nascimento:
+                <input type="text" class="input-box input-number input-edit" id="dn" maxlength="10" data-js="dn">
+            </label>
+            <label for="gender">Gênero:
+                <select name="genero" id="gender">
+                    <option value="none">------</option>
+                    <option value="none">Feminino</option>
+                    <option value="none">Masculino</option>
+                    <option value="none">Não Binário</option>
+                    <option value="none">Outro</option>
+                </select>
+            </label>
+        </div>
+        <label for="email">Email:
+            <input type="email" class="input-box input-text input-email" id="email">
+        </label>
+        <label for="cel">Cel:
+            <input type="tel" class="input-box input-number input-edit" id="cel" maxlength="14" data-js="cel">
+        </label>
+        <div>
+            <label for="cep">CEP:
+                <input type="text" class="input-box input-number input-edit" id="cep" maxlength="9" data-js="cep">
+            </label>
+            <label for="comp">Complemento:
+                <input type="text" class="input-box input-number" id="comp" maxlength="4">
+            </label>
+        </div>
+        <div id="buttons">
+            <button type="button" class="btns" id="btn-send">Enviar</button>
+            <button type="button" class="btns" id="btn-open">Abrir Todos</button>
+            <button type="button" class="btns" id="btn-close">Fechar Todos</button>
+        </div>
+    </form>
+    <section class="Cards-Area">
     </section>
-    <section class="Cards-Area"></section>
     <script src="Script.js"></script>
 </body>
 
