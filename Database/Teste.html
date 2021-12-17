@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database prototype</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cards.css">
+</head>
+
+<body>
+    <section class="area-data">
+        <label id="L-name" for="name">Name:
+        <input type="text" class="text-input-name" name="Name" id="name" value=""></label>
+        <label id="L-RG" for="RG-Number">RG:
+        <input type="number" class="text-input" name="RG" id="RG-Number" value=""></label>
+        <label id="L-CPF" for="CPF-Number">CPF:
+        <input type="number" class="text-input" name="CPF" id="CPF-Number" value=""></label>
+        <label id="L-BD" for="Birth-Date">Birth Date:
+        <input type="date" class="text-input" name="Birth Date" id="Birth-Date" value=""></label>
+        <label id="L-Gender" for="Gender-Option">Gender:
+        <select name="Gender" id="Gender-Option">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select></label>
+        <label id="L-Email" for="Email">Email:
+            <input type="email" class="text-input" name="Email" id="Email" value=""></label>
+        <label id="L-Cel" for="Cel-Number">Cel:
+        <input type="number" class="text-input" name="Cel" id="Cel-Number" value=""></label>
+        <label id="L-CEP" for="CEP-Number">CEP:
+        <input type="number" class="text-input" name="CEP" id="CEP-Number" value=""></label>
+        <input type="button" value="Enviar" id="submit">
+    </section>
+    <section class="Cards-Area"></section>
+    <script src="Script.js"></script>
+</body>
+
+</html>
