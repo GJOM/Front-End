@@ -5,6 +5,11 @@
     font-size: 16px;
     color: white;
 }
+header{
+    background: #00214d;
+    width: 100vw;
+    height: 50px;
+}
 
 body{
     display: flex;
@@ -26,7 +31,15 @@ body{
     gap: 10px ;
 }
 
-div{
+#div-error{
+    height: 20px;
+}
+
+#error{
+    color: rgb(163, 1, 1);    
+}
+
+.divLabel{
     display: flex;
     flex-direction: row;
     width: 320px;

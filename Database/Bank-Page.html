@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database prototype</title>
+    <link rel="stylesheet" href="Page.css">
+    <link rel="stylesheet" href="forms.css">
+    <link rel="stylesheet" href="card.css">
+</head>
+
+<body>
+    <header>
+        <h1 id="logo-name">Gajoom</h1>
+        <nav>
+            <a href="#" class="nav-links"></a>
+            <a href="#" class="nav-links"></a>
+            <a href="#" class="nav-links">Já é cadastrado? Entre aqui.</a>
+        </nav>
+    </header>
+    <main>
+        <section id="login-page">
+            <label for="login">Login:
+                <input type="text" name="login" id="login"></label>
+            <label for="password">Senha:
+                <input type="text" name="password" id="password">
+            </label>
+        </section>
+        <section id="bank-actions">
+            <div id="buttons-box">
+                <button>Sacar</button>
+                <button>Depositar</button>
+                <button>Saldo</button>
+                <button>Extrato</button>
+            </div>
+            <div class="bank-current"></div>
+            <div id="actions-view"></div>
+        </section>
+    </main>
+    <section id="left-area">
+        <form class="area-data">
+            <div class="divLabel" id="div-error"><p id="error"></p></div>
+            <label for="Name">Nome:
+                <input type="text" class="input-box-n input-text input-edit input-format" id="name" data-js="name"></label>
+            <div class="divLabel">
+                <label for="rg">RG:
+                    <input type="text" class="input-box input-number input-edit input-format" id="rg" maxlength="12" data-js="rg">
+                </label>
+                <label for="cpf">CPF:
+                    <input type="text" class="input-box input-number input-edit input-format" id="cpf" maxlength="14" data-js="cpf">
+                </label>
+            </div>
+            <div class="divLabel">
+                <label for="dn">Data Nascimento:
+                    <input type="text" class="input-box input-number input-edit input-format" id="dn" maxlength="10" data-js="dn">
+                </label>
+                <label for="gender">Gênero:
+                    <select name="genero" id="gender" class="input-format">
+                        <option >------</option>
+                        <option >Feminino</option>
+                        <option >Masculino</option>
+                        <option >Não Binário</option>
+                        <option >Outro</option>
+                    </select>
+                </label>
+            </div>
+            <label for="email">Email:
+                <input type="email" class="input-box input-text input-email input-format" id="email">
+            </label>
+            <label for="cel">Cel:
+                <input type="tel" class="input-box input-number input-edit input-format" id="cel" maxlength="14" data-js="cel">
+            </label>
+            <div class="divLabel">
+                <label for="cep">CEP:
+                    <input type="text" class="input-box input-number input-edit input-format" id="cep" maxlength="9" data-js="cep">
+                </label>
+                <label for="comp">Complemento:
+                    <input type="text" class="input-box input-number" id="comp" maxlength="4">
+                </label>
+            </div>
+            <div id="buttons">
+                <button type="button" class="btns" id="btn-send">Enviar</button>
+                <button type="button" class="btns" id="btn-open">Abrir Todos</button>
+                <button type="button" class="btns" id="btn-close">Fechar Todos</button>
+            </div>
+        </form>
+        <section class="Cards-Area">
+        </section>
+    </section>
+    <script src="Script.js"></script>
+</body>
+
+</html>
