@@ -23,6 +23,8 @@ section {
     background: #F1F1F1;
     gap: 2em;
     align-items: center;
+    border-radius: 20px;
+    box-shadow: 2px 3px 10px #97baff;
 }
 
 h1,

@@ -27,34 +27,52 @@ class Card {
             /[a-z]{1,10}/,
             /\D{10,40}/,
             /^\([0-9]{2}\)[0-9]{5}\-[0-9]{4}/,
-            /^[0-9]{5}\-[0-9]{3}/
+            /^[0-9]{5}\-[0-9]{3}/,
+            /(?=.*\d)(?=.*[!-*@¨_+=-])(?=.*[a-z])(?=.*[A-Z])([0-9a-zA-Z!-*@¨_+=-]{8,}$)/
         ]
         let theTrue = []
 
         const sendBtn = document.querySelector("#btn-send");
         const error = document.querySelector("#error")
-
         sendBtn.addEventListener("click", () => {
-            formatter.forEach((e,i)=>{
+            formatter.forEach((e, i) => {
                 const y = x[i]
-                if(e.test(y.value)){
-                console.log(`${e}: ${y.value}`);
-                theTrue.push(e.test(y.value));
+                if (y.value != "" || y.selectedIndex == 0) {
+                    y.classList.remove("not-valid")
+                    if (e.test(y.value)) {
+                        console.log(`${y.value}`);
+                        theTrue.push(e.test(y.value));
+                    }
+                    else if (y == document.querySelector("#gender")) {
+                        if (e.test(y.options[y.selectedIndex].text)) {
+                            console.log(`${y}`)
+                            theTrue.push(e.test(y.options[y.selectedIndex].text))
+                        }
+                        else {
+                            error.innerText = "Preencha todos os campos corretamente!"
+                            y.classList.add("not-valid")
+                            theTrue = []
+                        }
+                    }
+                    else {
+                        error.innerText = "Preencha todos os campos corretamente!"
+                        y.classList.add("not-valid")
+                        theTrue = []
+                    }
                 }
-                else if (e.test(y.options[y.selectedIndex].text)){
-                    console.log(`${e}: ${y}`)
-                    theTrue.push(e.test(y.options[y.selectedIndex].text))
+                else {
+                    error.innerText = "Preencha todos os campos corretamente!"
+                    y.classList.add("not-valid")
+                    theTrue = []
                 }
             })
 
-            if (theTrue.length == 8) {
+            if (theTrue.length >= 8) {
                 this.Card();
                 this.cardName();
                 this.CardInfo();
-                error.innerText = "Fechou"
-            }
-            else {
-                error.innerText = "Preencha todos os campos corretamente!"
+                error.innerText = ""
+                theTrue = []
             }
         })
     }
