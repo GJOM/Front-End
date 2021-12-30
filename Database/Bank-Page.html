@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Database prototype</title>
     <link rel="stylesheet" href="Page.css">
-    <link rel="stylesheet" href="forms.css">
-    <link rel="stylesheet" href="card.css">
     <script src="https://kit.fontawesome.com/83e845c47b.js" crossorigin="anonymous"></script>
 </head>
 
@@ -36,8 +34,8 @@
                 <label for="password">Senha:
                     <input type="text" name="password" id="password">
                 </label>
-                <div><span>Registre-se</span></div>
-                <input type="button" value="Entrar" id="login-btn">
+                <div><span id="register-btn">Registre-se</span></div>
+                <input type="button" value="Entrar" id="login-btn" class="btns">
             </section>
 
             <section id="bank-actions">
@@ -86,7 +84,7 @@
                     </label>
                 </div>
                 <label for="email">Email:
-                    <input type="email" class="input-box input-text input-email input-format" id="email">
+                    <input type="email" class="input-box input-text input-email input-format input-login" id="email">
                 </label>
                 <label for="cel">Cel:
                     <input type="tel" class="input-box input-number input-edit input-format" id="cel" maxlength="14"
@@ -102,7 +100,7 @@
                     </label>
                 </div>
                 <label for="comp">Senha:
-                    <input type="text" class="input-box input-text input-edit input-format" id="password">
+                    <input type="text" class="input-box input-text input-format input-login" id="password-register" value="">
                 </label>
                 <div id="buttons">
                     <button type="button" class="btns" id="btn-send">Enviar</button>
@@ -127,8 +125,11 @@
             </div>
         </div>
     </footer>
-
-    <script src="Script.js"></script>
+    <script src="Card.js"></script>
+    <script src="Login.js"></script>
+    <script src="InputVal.js"></script>
+    <script src="Index.js"></script>
+    
 </body>
 
 </html>

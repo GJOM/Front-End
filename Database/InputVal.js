@@ -1,10 +1,8 @@
-class Card {
-
-    constructor() {
-        this.secCards = document.querySelector(".Cards-Area");
-        this.inputs = document.querySelectorAll(".input-box")
+class InputVal extends User{
+    constructor(){
+        super();
         this.InputsFormatter();
-        this.SendEvent();
+        this.Mask();
     }
 
     InputsFormatter() {
@@ -17,7 +15,7 @@ class Card {
         this.Mask();
     }
 
-    SendEvent() {
+    RegisterValidation() {
         const x = document.querySelectorAll(".input-format")
         const formatter = [
             /\D{10,50}/,
@@ -30,104 +28,37 @@ class Card {
             /^[0-9]{5}\-[0-9]{3}/,
             /(?=.*\d)(?=.*[!-*@¨_+=-])(?=.*[a-z])(?=.*[A-Z])([0-9a-zA-Z!-*@¨_+=-]{8,}$)/
         ]
-        let theTrue = []
 
-        const sendBtn = document.querySelector("#btn-send");
         const error = document.querySelector("#error")
-        sendBtn.addEventListener("click", () => {
             formatter.forEach((e, i) => {
-                const y = x[i]
+                const y = x[i];
                 if (y.value != "" || y.selectedIndex == 0) {
                     y.classList.remove("not-valid")
                     if (e.test(y.value)) {
-                        console.log(`${y.value}`);
-                        theTrue.push(e.test(y.value));
+                        this.theTrue.push(e.test(y.value));
                     }
                     else if (y == document.querySelector("#gender")) {
                         if (e.test(y.options[y.selectedIndex].text)) {
-                            console.log(`${y}`)
-                            theTrue.push(e.test(y.options[y.selectedIndex].text))
+                            this.theTrue.push(e.test(y.options[y.selectedIndex].text))
                         }
                         else {
-                            error.innerText = "Preencha todos os campos corretamente!"
-                            y.classList.add("not-valid")
-                            theTrue = []
+                            error.innerText = "Preencha todos os campos corretamente!";
+                            y.classList.add("not-valid");
+                            this.theTrue = [];
                         }
                     }
                     else {
-                        error.innerText = "Preencha todos os campos corretamente!"
-                        y.classList.add("not-valid")
-                        theTrue = []
+                        error.innerText = "Preencha todos os campos corretamente!";
+                        y.classList.add("not-valid");
+                        this.theTrue = [];
                     }
                 }
                 else {
-                    error.innerText = "Preencha todos os campos corretamente!"
-                    y.classList.add("not-valid")
-                    theTrue = []
+                    error.innerText = "Preencha todos os campos corretamente!";
+                    y.classList.add("not-valid");
+                    this.theTrue = [];
                 }
             })
-
-            if (theTrue.length >= 8) {
-                this.Card();
-                this.cardName();
-                this.CardInfo();
-                error.innerText = ""
-                theTrue = []
-            }
-        })
-    }
-
-    Card() {
-        this.card = document.createElement("div");
-        this.secCards.appendChild(this.card);
-        this.card.className = "card"
-    }
-
-    cardName() { // cria a div do Nome cadastrado.
-        const divName = document.createElement("div");
-        divName.className = "dName"
-
-        const name = document.createElement("h2");
-        name.className = "name"
-
-        this.card.appendChild(divName);
-        divName.appendChild(name);
-
-        const inputName = document.querySelector("#name");
-        name.innerText = inputName.value;
-        inputName.value = ""
-    }
-
-    CardInfo() {
-        const divInfo = document.createElement("div");
-        divInfo.className = "dInfo"
-
-        const select = document.querySelector("#gender");
-
-        const infoType = ["RG", "CPF", "Data Nascimento", "Gênero", "Email", "Cel", "CEP", "Complemento"]
-        this.card.appendChild(divInfo);
-
-        for (let i = 0; i <= 7; i++) {
-
-            let Info = document.createElement("span");
-            Info.className = "Info"
-            divInfo.appendChild(Info);
-
-            if (infoType[3] == infoType[i]) {
-                Info.innerText = `${infoType[i]}: ${select.options[select.selectedIndex].text}`;
-                select.selectedIndex = "0"
-            }
-            else if (i > 3) {
-                Info.innerText = `${infoType[i]}: ${this.inputs[i - 1].value}`;
-                this.inputs[i - 1].value = ""
-            }
-            else {
-                Info.innerText = `${infoType[i]}: ${this.inputs[i].value}`;
-                this.inputs[i].value = ""
-            }
-
-        }
-
     }
 
     Mask() {
@@ -178,4 +109,4 @@ class Card {
     }
 }
 
-const Cards = new Card();
+const val = new InputVal();
