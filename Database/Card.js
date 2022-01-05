@@ -1,4 +1,4 @@
-class Card{
+class Card {
 
     constructor() {
         this.secCards = document.querySelector(".Cards-Area");
@@ -7,6 +7,7 @@ class Card{
         this.loginInfo = document.querySelectorAll(".input-login");
         this.sendBtn = document.querySelector("#btn-send");
         this.userAccounts = [];
+        this.logBtn = document.querySelector("#login-btn");
     }
 
     Card() {
@@ -27,7 +28,6 @@ class Card{
 
         const inputName = document.querySelector("#name");
         name.innerText = inputName.value;
-        // inputName.value = ""
     }
 
     CardInfo() {
@@ -47,15 +47,13 @@ class Card{
 
             if (infoType[3] == infoType[i]) {
                 Info.innerText = `${infoType[i]}: ${select.options[select.selectedIndex].text}`;
-                // select.selectedIndex = "0"
+                select.selectedIndex = "0"
             }
             else if (i > 3) {
                 Info.innerText = `${infoType[i]}: ${this.inputs[i - 1].value}`;
-                // this.inputs[i - 1].value = ""
             }
             else {
                 Info.innerText = `${infoType[i]}: ${this.inputs[i].value}`;
-                // this.inputs[i].value = ""
             }
 
         }

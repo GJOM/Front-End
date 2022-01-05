@@ -28,8 +28,8 @@ class InputVal extends User{
             /^[0-9]{5}\-[0-9]{3}/,
             /(?=.*\d)(?=.*[!-*@¨_+=-])(?=.*[a-z])(?=.*[A-Z])([0-9a-zA-Z!-*@¨_+=-]{8,}$)/
         ]
-
-        const error = document.querySelector("#error")
+        
+        
             formatter.forEach((e, i) => {
                 const y = x[i];
                 if (y.value != "" || y.selectedIndex == 0) {
@@ -42,24 +42,22 @@ class InputVal extends User{
                             this.theTrue.push(e.test(y.options[y.selectedIndex].text))
                         }
                         else {
-                            error.innerText = "Preencha todos os campos corretamente!";
+                            this.error.innerText = "Preencha todos os campos corretamente!";
                             y.classList.add("not-valid");
-                            this.theTrue = [];
                         }
                     }
                     else {
-                        error.innerText = "Preencha todos os campos corretamente!";
+                        this.error.innerText = "Preencha todos os campos corretamente!";
                         y.classList.add("not-valid");
-                        this.theTrue = [];
                     }
                 }
                 else {
-                    error.innerText = "Preencha todos os campos corretamente!";
+                    this.error.innerText = "Preencha todos os campos corretamente!";
                     y.classList.add("not-valid");
-                    this.theTrue = [];
                 }
             })
     }
+
 
     Mask() {
 

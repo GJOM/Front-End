@@ -1,19 +1,22 @@
 class BankEvents extends InputVal {
     constructor() {
         super();
-        this.SendEvents();
+        this.FormEvents();
     }
 
-    SendEvents() {
+    FormEvents() {
+        const inputs = document.querySelectorAll("form label input");
         this.sendBtn.addEventListener("click", () => {
+            this.theTrue = [];
             this.RegisterValidation()
-            if (this.theTrue.length >= 9) {
+            this.UserRegisterRepeat();
+            if (this.theTrue.length >= 10) {
                 this.UserRegister();
                 this.Card();
                 this.cardName();
                 this.CardInfo();
                 error.innerText = "";
-                this.theTrue = [];
+                inputs.forEach(e=> e.value = "")
             }
         })
     }

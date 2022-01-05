@@ -104,10 +104,13 @@ footer{
 }
 
 /* parte de estilziação do formulário */
+.display-disappear{
+    display: none;
+}
 
 .area-data{
     background-color: #00214d;
-    width: 600px ;
+    width: 450px ;
     height: 30em;
     display: flex;
     flex-direction: column;
